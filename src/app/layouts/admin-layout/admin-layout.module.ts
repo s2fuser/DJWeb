@@ -17,6 +17,11 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import { PaymentComponent } from 'app/payment/payment.component';
+import { DjbookingComponent } from 'app/djbooking/djbooking.component';
+import { EventComponent } from 'app/event/event.component';
+import { SettingsComponent } from 'app/settings/settings.component';
+import { UserDJListComponent } from 'app/user-dj-list/user-dj-list.component';
 
 @NgModule({
   imports: [
@@ -40,6 +45,12 @@ import {MatSelectModule} from '@angular/material/select';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    //PaymentComponent
+    // DjbookingComponent,
+    // EventComponent,
+    // SettingsComponent,
+    // UserDJListComponent
+
   ]
 })
 

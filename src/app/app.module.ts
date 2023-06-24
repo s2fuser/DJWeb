@@ -7,9 +7,14 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { PaymentComponent } from './payment/payment.component';
+import { SettingsComponent } from './settings/settings.component';
+import { UserDJListComponent } from './user-dj-list/user-dj-list.component';
+import { EventComponent } from './event/event.component';
+import { DjbookingComponent } from './djbooking/djbooking.component';
 
 @NgModule({
-  imports: [
+  imports: [ 
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -21,6 +26,11 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    PaymentComponent,
+    SettingsComponent,
+    UserDJListComponent,
+    EventComponent,
+    DjbookingComponent
 
   ],
   providers: [],

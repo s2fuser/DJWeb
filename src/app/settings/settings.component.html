@@ -1,5 +1,52 @@
 <div class="main-content">
     <div class="container-fluid">
-        <p>settings works!</p>
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+            <mat-tab label="Commission Configuration">
+                <mat-card>
+                    <mat-card-header class="mt-2">
+                        <mat-card-title class="headerTab">
+                            <div class="headerTab">
+                                Commission Configuration
+                            </div>
+                          
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-form-field appearance="outline" class="mt-2">
+                        <mat-label>Commission(%)</mat-label>
+                        <input matInput placeholder="Commission">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="mt-2">
+                        <mat-label>Fixed Commission</mat-label>
+                        <input matInput placeholder="Fixed Commission">
+                    </mat-form-field>
+                    <div class="buttons">
+                        <button mat-raised-button color="primary">Save</button>
+                        <button class="ml-3" mat-raised-button color="warn">Close</button>
+                    </div>
+                    
+                </mat-card>
+            </mat-tab>
+            <mat-tab label="Payout Method">
+                <mat-card>
+                    <mat-card-header class="mt-2">
+                        <mat-card-title>Payout Method</mat-card-title>
+                    </mat-card-header>
+                    <mat-form-field>
+                        <mat-label>Payment Mode</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    <div class="buttons">
+                        <button mat-raised-button color="primary">Save</button>
+                        <button class="ml-3" mat-raised-button color="warn">Close</button>
+                    </div>
+                    
+                </mat-card>
+            </mat-tab>
+
+        </mat-tab-group>
     </div>
 </div>

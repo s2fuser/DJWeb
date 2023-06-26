@@ -5,3 +5,8 @@
     top: 0 !important;
     position: none !important;
 }
+
+::ng-deep .sidebar[data-color=danger] li.active > a {
+    background-color: #4aa54e;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(54, 244, 54, 0.4);
+}

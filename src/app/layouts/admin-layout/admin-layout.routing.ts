@@ -13,6 +13,7 @@ import { DjbookingComponent } from 'app/djbooking/djbooking.component';
 import { EventComponent } from 'app/event/event.component';
 import { SettingsComponent } from 'app/settings/settings.component';
 import { UserDJListComponent } from 'app/user-dj-list/user-dj-list.component';
+import { LoginComponent } from 'app/login/login.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -28,4 +29,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'event',          component: EventComponent },
     { path: 'settings',       component: SettingsComponent },
     { path: 'dj-list',        component: UserDJListComponent },
+   // { path: 'login',          component: LoginComponent },
 ];

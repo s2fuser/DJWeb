@@ -1,0 +1,21 @@
+.mat-tab-group {
+    margin-bottom: 48px;
+  }
+ .mt-2{
+    margin-top: 2%;
+ } 
+
+ .ml-3{
+    margin-left: 3%;
+ } 
+ .buttons{
+    display: flex;
+    justify-content: center;
+ }
+ ::ng-deep .mat-card-header-text{
+    margin: 0 !important;
+ }
+ ::ng-deep .mat-tab-label-content{
+   font-size: medium;
+    font-weight: 600;
+ }

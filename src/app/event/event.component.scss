@@ -1,0 +1,65 @@
+.card {
+    border: 0;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    border-radius: 16px;
+    color: #333333;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+.card-title {
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.card-img-top {
+    border-top-left-radius: calc(0.25rem - -8px);
+    border-top-right-radius: calc(0.25rem - -8px);
+    flex-shrink: 0;
+    width: 100%;
+
+}
+
+.card-text {
+    font-size: 15px;
+
+}
+
+.icon-card {
+    margin-top: -35px;
+}
+
+.date {
+    position: relative;
+    top: -30px;
+    right: -30px;
+}
+
+.location {
+    position: relative;
+    top: -30px;
+    left: 30px;
+}
+
+.booked {
+    position: relative;
+    top: -30px;
+    left: 30px;
+
+}
+
+.host {
+    position: relative;
+    top: -30px;
+    left: 30px;
+
+}
+
+.about {
+    position: relative;
+    top: -30px;
+    left: 30px;
+
+}

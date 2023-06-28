@@ -22,6 +22,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { LoginComponent } from './login/login.component';
+import { ManualToasterComponent } from './components/manual-toaster/manual-toaster.component';
+
+
 
 
 @NgModule({
@@ -41,8 +44,7 @@ import { LoginComponent } from './login/login.component';
     NgFor,
     MatSelectModule,
     MatPaginatorModule,
-    MatTableModule
-   
+    MatTableModule,
   ],
   declarations: [
     AppComponent,
@@ -52,7 +54,8 @@ import { LoginComponent } from './login/login.component';
     UserDJListComponent,
     EventComponent,
     DjbookingComponent,
-    LoginComponent
+    LoginComponent,
+    ManualToasterComponent
 
   ],
   providers: [],

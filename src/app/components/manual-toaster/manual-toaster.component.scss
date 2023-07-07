@@ -1,26 +1,15 @@
 .manual-toaster {
-    background-color: #10a742;
-    color: #fff;
-    padding: 10px;
-    border-radius: 4px;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-  }
-  
-  .manual-toaster.visible {
-    opacity: 1;
-  }
-  .manual-toaster1{
-    background-color: #911717;
-    color: #fff;
-    padding: 10px;
-    border-radius: 4px;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-  }
+  background-color: #195f10;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.manual-toaster.visible {
+  opacity: 1;
+}

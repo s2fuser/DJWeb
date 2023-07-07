@@ -23,7 +23,8 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { LoginComponent } from './login/login.component';
 import { ManualToasterComponent } from './components/manual-toaster/manual-toaster.component';
-
+import { LoadingComponent } from './loading';
+import { ManualToasterErrorComponent } from './components/manual-toaster-error/manual-toaster-error.component';
 
 
 
@@ -55,7 +56,9 @@ import { ManualToasterComponent } from './components/manual-toaster/manual-toast
     EventComponent,
     DjbookingComponent,
     LoginComponent,
-    ManualToasterComponent
+    ManualToasterComponent,
+    LoadingComponent,
+    ManualToasterErrorComponent
 
   ],
   providers: [],

@@ -1,0 +1,15 @@
+.manual-toaster {
+    background-color: #750707;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+  
+  .manual-toaster.visible {
+    opacity: 1;
+  }

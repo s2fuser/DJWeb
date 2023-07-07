@@ -8,45 +8,50 @@
                             <div class="headerTab">
                                 Commission Configuration
                             </div>
-                          
+
                         </mat-card-title>
                     </mat-card-header>
+                    
                     <mat-form-field appearance="outline" class="mt-2">
                         <mat-label>Commission(%)</mat-label>
-                        <input matInput placeholder="Commission">
+                        <input [formControl]="commissionPer" matInput placeholder="Commission">
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="mt-2">
                         <mat-label>Fixed Commission</mat-label>
-                        <input matInput placeholder="Fixed Commission">
+                        <input [formControl]="commissionAmt" matInput placeholder="Fixed Commission">
                     </mat-form-field>
                     <div class="buttons">
-                        <button mat-raised-button color="primary">Save</button>
+                        <button mat-raised-button color="primary" (click)="save()">Save</button>
                         <button class="ml-3" mat-raised-button color="warn">Close</button>
                     </div>
-                    
+
                 </mat-card>
             </mat-tab>
-            <mat-tab label="Payout Method">
+            <mat-tab label="Payout Method" >
                 <mat-card>
                     <mat-card-header class="mt-2">
                         <mat-card-title>Payout Method</mat-card-title>
                     </mat-card-header>
                     <mat-form-field>
                         <mat-label>Payment Mode</mat-label>
-                        <mat-select>
-                          <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
-                          </mat-option>
+                        <mat-select [formControl]="paymentValue">
+                            <mat-option *ngFor="let paymentData of payments" [value]="paymentData.value">
+                                {{paymentData.viewValue}}
+                            </mat-option>
                         </mat-select>
-                      </mat-form-field>
+                    </mat-form-field>
                     <div class="buttons">
-                        <button mat-raised-button color="primary">Save</button>
+                        <button mat-raised-button color="primary" (click)="paymentSave()">Save</button>
                         <button class="ml-3" mat-raised-button color="warn">Close</button>
                     </div>
-                    
+
                 </mat-card>
             </mat-tab>
 
         </mat-tab-group>
+        <app-manual-toaster message={{message}} #toaster></app-manual-toaster>
+        <app-manual-toaster-error message={{message}} #toastererror></app-manual-toaster-error>
+        <loading *ngIf="isLoading">{{ isLoading }}</loading>
     </div>
+
 </div>

@@ -1,12 +1,11 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-manual-toaster',
-  templateUrl: './manual-toaster.component.html',
-  styleUrls: ['./manual-toaster.component.scss']
+  selector: 'app-manual-toaster-error',
+  templateUrl: './manual-toaster-error.component.html',
+  styleUrls: ['./manual-toaster-error.component.scss']
 })
-export class ManualToasterComponent implements OnInit {
-
+export class ManualToasterErrorComponent implements OnInit {
   @Input() message: string;
 
   public isVisible: boolean = false;
@@ -18,11 +17,11 @@ export class ManualToasterComponent implements OnInit {
       this.isVisible = false;
     }, 3000); // Hide toaster after 3 seconds
   }
-
   constructor() { }
-
+ 
   ngOnInit(): void {
     
   }
+
 
 }

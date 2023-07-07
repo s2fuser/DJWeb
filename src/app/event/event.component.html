@@ -1,120 +1,68 @@
 <div class="main-content">
     <div class="container-fluid">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://t3.ftcdn.net/jpg/05/60/92/74/360_F_560927426_vfdMpGKAEATpYMTtHwhdqWJlYJiCdTWO.jpg"
-                        class="card-img-top" />
-                    <div class="card-body">
-                        <div class="card-icon">
-                            <i class="material-icons">calendar_month</i>
-                            <p class="date">Date & Time :</p>
+        <div class="row">
+            <div *ngFor="let value of eventArray" class="col-md-4 col-lg-4 col-sm-12 pt-2">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                      <mat-card-title>{{value.Event_name}}</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="{{value.Event_img}}" alt="Event image">
+                    <mat-card-content>
+                        <div class="cardContent">
+                            <i class="material-icons">event</i>
+                            <div class="fw-b fs-16 pl-2">Date: </div>
+                            <div class="fw-500 fs-15 pl-2">{{value.Event_startDate}}</div>
                         </div>
-                        <div class="icon-card">
-                            <i class="material-icons">my_location</i>
-                            <p class="location">Address :</p>
+                        <div class="cardContent pt-2">
+                            <i class="material-icons">timer</i>
+                            <div class="fw-b fs-16 pl-2">Time: </div>
+                            <div class="fw-500 fs-15 pl-2">{{value.Event_startTime}}</div>
                         </div>
-                        <div class="icon-card">
-                            <i class="material-icons">movie_filter</i>
-                            <p class="booked">Booked Tickets :</p>
+                        <div class="cardContent pt-2">
+                            <i class="material-icons">home</i>
+                            <div class="fw-b fs-16 pl-2">Address:</div>
+                            <div class="fw-500 fs-15 pl-2">{{value.Event_address}}</div>
                         </div>
-                        <div class="icon-card">
-                            <i class="material-icons">mic_external_off</i>
-                            <p class="host">Host :</p>
+                        
+                        <div class="cardContent pt-2">
+                            <i class="material-icons">money</i>
+                            <div class="fw-b fs-16 pl-2">Cost: </div>
+                            <div class="fw-500 fs-15 pl-2">{{value.Event_cost}}</div>
                         </div>
-                        <div class="icon-card">
-                            <i class="material-icons">event_note</i>
-                            <p class="about">About Event :</p>
+                        <div >
+                            <div class="cardContent pt-2">
+                                <i class="material-icons">info</i>
+                                <div class="fw-b fs-16 pl-2">About Event: </div>
+                            </div>
+                            
+                            <div class="fw-500 fs-15 pl-2">{{value.Event_about}}</div>
                         </div>
-                        <p class="card-text">
-                            DJs use a controller, turntables or CDJs to cue up, combine and play songs from vinyl
-                            records,
-                            CDs or digital audio files on a computer.
-                            They use headphones to monitor the music so they know how it will sound to their audience.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                </div>
+                       
+                        
+                    </mat-card-content>
+                  </mat-card>
             </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://st.depositphotos.com/2060643/2008/i/450/depositphotos_20082697-stock-photo-skeleton-x-ray-dj-3.jpg"
-                        class="card-img-top" />
-                    <div class="card-body">
-
-                        <div class="card-icon">
-                            <i class="material-icons">calendar_month</i>
-                            <p class="date">Date & Time :</p>
-                        </div>
-
-                        <div class="icon-card">
-                            <i class="material-icons">my_location</i>
-                            <p class="location">Address :</p>
-                        </div>
-                        <div class="icon-card">
-                            <i class="material-icons">movie_filter</i>
-                            <p class="booked">Booked Tickets :</p>
-                        </div>
-                        <div class="icon-card">
-                            <i class="material-icons">mic_external_off</i>
-                            <p class="host">Host :</p>
-                        </div>
-                        <div class="icon-card">
-                            <i class="material-icons">event_note</i>
-                            <p class="about">About Event :</p>
-                        </div>
-                        <p class="card-text">The main purpose of a DJ is to make people feel good on the dance
-                            floor.
-                            Of course, the definition of 'good' varies depending on the type of DJ set
-                            , the event's format and other factors. In some cases, it might be a sense of novelty,
-                            new tracks and an interesting musical experience.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://st.depositphotos.com/1009659/2893/i/450/depositphotos_28936549-stock-photo-party-poster.jpg"
-                        class="card-img-top" />
-                    <div class="card-body">
-                        <div class="card-icon">
-                            <i class="material-icons">calendar_month</i>
-                            <p class="date">Date & Time :</p>
-                        </div>
-                        <div class="icon-card">
-                            <i class="material-icons">my_location</i>
-                            <p class="location">Address :</p>
-                        </div>
-                        <div class="icon-card">
-                            <i class="material-icons">movie_filter</i>
-                            <p class="booked">Booked Tickets :</p>
-                        </div>
-                        <div class="icon-card">
-                            <i class="material-icons">mic_external_off</i>
-                            <p class="host">Host :</p>
-                        </div>
-                        <div class="icon-card">
-                            <i class="material-icons">event_note</i>
-                            <p class="about">About Event :</p>
-                        </div>
-                        <p class="card-text">
-                            A successful DJ has an eclectic range of tracks that keep the party going.
-                            Knowledge of classic hits and modern songs makes a good DJ stand out.
-                            When the crowd is having a good time,
-                            an experienced DJ knows when to lay down that new popular song
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                </div>
-            </div>
-
         </div>
+        <loading *ngIf="isLoading">{{ isLoading }}</loading>
+        <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>Shiba Inu</mat-card-title>
+                      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                      <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                        bred for hunting.
+                      </p>
+                    </mat-card-content>
+                  </mat-card>
+            </div>
+        </div> -->
 
     </div>
 </div>

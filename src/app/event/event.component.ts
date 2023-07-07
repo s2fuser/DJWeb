@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'api.service';
 
 @Component({
   selector: 'app-event',
@@ -7,9 +8,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private apiService: ApiService) { }
+  isLoading = false;
+  startDate:any;
+  startTime:any;
+  address:any;
+  name:any;
+  about:any;
+  cost:any;
+  eventArray:Array<any>=[];
   ngOnInit(): void {
+    this.getEvent()
+  }
+
+  getEvent(){
+    this.isLoading = true
+    this.apiService.get('getEvents').subscribe((response: any) => {
+      if (response.status == 'sucess') {
+        for(let i=0;i< response.message.length ; i++){
+          var array={
+            Event_name:response.message[i].Event_name,
+            Event_startDate:response.message[i].Event_startDate,
+            Event_startTime:response.message[i].Event_startTime,
+            Event_address:response.message[i].Event_address,
+            Event_about:response.message[i].Event_about,
+            Event_cost:response.message[i].Event_cost,
+            Event_img:'../../assets/img/event.jpeg'
+          }
+          
+          this.eventArray.push(array)
+        }
+      }
+      this.eventArray
+      this.isLoading = false
+     
+    });
   }
 
 }

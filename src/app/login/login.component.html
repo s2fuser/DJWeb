@@ -4,7 +4,8 @@
         <h2>Login</h2>
         <form>
             <div class="inputBox">
-                <input type="email" name="email" required onkeyup="this.setAttribute('value', this.value);" value=""
+                <!-- required onkeyup="this.setAttribute('value', this.value);" value="" -->
+                <input type="email" name="email" 
                     [(ngModel)]="userName">
                 <label>Username</label>
             </div>
@@ -20,7 +21,10 @@
             </div>
         </form>
         
-        <!-- <button (click)="">Show Toaster</button> -->
+        <!-- <button (click)="showToaster()">Show Toaster</button>
+        <button (click)="showToasterError()">Show Toastererror</button> -->
     </div>
-    <app-manual-toaster message={{message}} type ={{type}} #toaster></app-manual-toaster>
+    <app-manual-toaster message={{message}} #toaster></app-manual-toaster>
+    <app-manual-toaster-error message={{message}} #toastererror></app-manual-toaster-error>
+    <loading *ngIf="isLoading">{{ isLoading }}</loading>
 </div>

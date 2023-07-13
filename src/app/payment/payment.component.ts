@@ -43,8 +43,8 @@ export class PaymentComponent implements OnInit {
           this.payment.push(array)
         }
       }
-      this.payment
       this.dataSource = new MatTableDataSource<PeriodicElement>(this.payment)
+      this.dataSource.paginator = this.paginator;
       this.isLoading = false
      
     });

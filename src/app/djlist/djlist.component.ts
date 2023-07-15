@@ -8,11 +8,12 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-user-dj-list',
-  templateUrl: './user-dj-list.component.html',
-  styleUrls: ['./user-dj-list.component.scss']
+  selector: 'app-djlist',
+  templateUrl: './djlist.component.html',
+  styleUrls: ['./djlist.component.scss']
 })
-export class UserDJListComponent implements OnInit {
+export class DjlistComponent implements OnInit {
+
   displayedColumns: string[] = ['position', 'name', 'email', 'mobileNo', 'action'];
   dataSource = new MatTableDataSource<PeriodicElement>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -35,21 +36,23 @@ export class UserDJListComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
   }
-
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   getUser() {
     this.isLoading = true
-    this.apiService.get('getUser').subscribe((response: any) => {
+    this.apiService.get('getdjUser').subscribe((response: any) => {
 
       if (response.status == 'sucess') {
         for (let i = 0; i < response.message.length; i++) {
           var array = {
             position: i + 1,
             // lastName
-            userid: response.message[i].userid,
-            name: response.message[i].firstName,
-            email: response.message[i].emailId,
-            mobileNo: response.message[i].mobileNumber,
-            isActive:response.message[i].isActive
+            userid: response.message[i].dj_userid,
+            name: response.message[i].dj_firstName,
+            email: response.message[i].dj_emailAddress,
+            mobileNo: response.message[i].dj_mobileNumber,
+            isActive:response.message[i].dj_isActive
           }
 
           this.userList.push(array)
@@ -80,15 +83,19 @@ export class UserDJListComponent implements OnInit {
       mobileNo: this.usermobile,
       userid: this.userId
     }
-    this.apiService.post('updateUser', param).subscribe((response: any) => {
+    this.apiService.post('updatedjUser', param).subscribe((response: any) => {
       console.log(response.status)
       if (response.status != 'error') {
-        this.isLoading = false
+
         this.showToaster('Update successfully !')
+        this.isLoading = false
         setTimeout(() => {
           this.reloadWindow()
           //this.router.navigate(['settings']);
         }, 2000);
+
+
+
       } else {
         this.isLoading = false
         this.showToasterError(response.message)
@@ -102,7 +109,7 @@ export class UserDJListComponent implements OnInit {
     let param = {
       userid: id
     }
-    this.apiService.post('deleteUser', param).subscribe((response: any) => {
+    this.apiService.post('deletedjUser', param).subscribe((response: any) => {
       console.log(response.status)
       if (response.status != 'error') {
         this.isLoading = false
@@ -111,6 +118,9 @@ export class UserDJListComponent implements OnInit {
           this.reloadWindow()
           //this.router.navigate(['settings']);
         }, 2000);
+
+
+
       } else {
         this.isLoading = false
         this.showToasterError(response.message)
@@ -119,20 +129,17 @@ export class UserDJListComponent implements OnInit {
     });
 
   }
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
   lockUser(id:any){
     this.isLoading = true
     var param = {
       userid:id,
       isActive:false
     }
-    this.apiService.post('lockUser', param).subscribe((response: any) => {
+    this.apiService.post('lockdjUser', param).subscribe((response: any) => {
       console.log(response.status)
       if (response.status != 'error') {
         this.isLoading = false
-        this.showToaster('User Locked successfully !')
+        this.showToaster('Dj-User Locked successfully !')
         setTimeout(() => {
           this.reloadWindow()
           //this.router.navigate(['settings']);
@@ -151,11 +158,11 @@ export class UserDJListComponent implements OnInit {
       userid:id,
       isActive:true
     }
-    this.apiService.post('unlockUser', param).subscribe((response: any) => {
+    this.apiService.post('unlockdjUser', param).subscribe((response: any) => {
       console.log(response.status)
       if (response.status != 'error') {
         this.isLoading = false
-        this.showToaster('User Unlocked successfully !')
+        this.showToaster('Dj-User Unlocked successfully !')
         setTimeout(() => {
           this.reloadWindow()
           //this.router.navigate(['settings']);
@@ -189,4 +196,3 @@ export interface PeriodicElement {
   email: string;
   mobileNo: string;
 }
-

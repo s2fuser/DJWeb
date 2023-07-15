@@ -14,20 +14,22 @@ import { EventComponent } from 'app/event/event.component';
 import { SettingsComponent } from 'app/settings/settings.component';
 import { UserDJListComponent } from 'app/user-dj-list/user-dj-list.component';
 import { LoginComponent } from 'app/login/login.component';
+import { DjlistComponent } from 'app/djlist/djlist.component';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
-    { path: 'typography',     component: TypographyComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'payment',        component: PaymentComponent },
-    { path: 'dj-booking',     component: DjbookingComponent },
-    { path: 'event',          component: EventComponent },
-    { path: 'settings',       component: SettingsComponent },
-    { path: 'dj-list',        component: UserDJListComponent },
-   // { path: 'login',          component: LoginComponent },
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'user-profile', component: UserProfileComponent },
+    { path: 'table-list', component: TableListComponent },
+    { path: 'typography', component: TypographyComponent },
+    { path: 'icons', component: IconsComponent },
+    { path: 'maps', component: MapsComponent },
+    { path: 'notifications', component: NotificationsComponent },
+    { path: 'upgrade', component: UpgradeComponent },
+    { path: 'payment', component: PaymentComponent },
+    { path: 'dj-booking', component: DjbookingComponent },
+    { path: 'event', component: EventComponent },
+    { path: 'settings', component: SettingsComponent },
+    { path: 'user-list', component: UserDJListComponent },
+    { path: 'djuser-list', component: DjlistComponent },
+    // { path: 'login',          component: LoginComponent },
 ];

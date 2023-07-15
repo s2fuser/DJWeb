@@ -52,6 +52,10 @@ export class PaymentComponent implements OnInit {
     
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }
 export interface PeriodicElement {
 

@@ -23,11 +23,14 @@ export class DjbookingComponent implements OnInit {
   ngOnInit(): void {
     this.getDjBookedlist()
   }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   getDjBookedlist() {
-    debugger
+    
     this.isLoading = true
     this.apiService.get('getBookedList').subscribe((response: any) => {
-      debugger
+      
       if (response.status == 'sucess') {
         for (let i = 0; i < response.message.length; i++) {
           var array = {
@@ -43,7 +46,7 @@ export class DjbookingComponent implements OnInit {
 
           this.bookedList.push(array)
         }
-        debugger
+        
       }
       this.dataSource = new MatTableDataSource<PeriodicElement>(this.bookedList)
       this.dataSource.paginator = this.paginator;

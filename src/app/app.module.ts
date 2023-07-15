@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { ManualToasterComponent } from './components/manual-toaster/manual-toaster.component';
 import { LoadingComponent } from './loading';
 import { ManualToasterErrorComponent } from './components/manual-toaster-error/manual-toaster-error.component';
+import { DjlistComponent } from './djlist/djlist.component';
 
 
 
@@ -58,7 +59,8 @@ import { ManualToasterErrorComponent } from './components/manual-toaster-error/m
     LoginComponent,
     ManualToasterComponent,
     LoadingComponent,
-    ManualToasterErrorComponent
+    ManualToasterErrorComponent,
+    DjlistComponent
 
   ],
   providers: [],

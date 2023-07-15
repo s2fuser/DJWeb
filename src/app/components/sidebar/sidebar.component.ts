@@ -11,7 +11,8 @@ export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     { path: '/settings', title: 'Settings',  icon:'settings', class: '' },
     { path: '/payment', title: 'Payment',  icon:'payment', class: '' },
-    { path: '/dj-list', title: 'User and DJ list',  icon:'assignmentnd', class: '' },
+    { path: '/user-list', title: 'User list',  icon:'assignmentnd', class: '' },
+    { path: '/djuser-list', title: 'DJ-User list',  icon:'assignmentnd', class: '' },
     { path: '/event', title: 'Event',  icon:'event', class: '' },
     { path: '/dj-booking', title: 'DJ Bookings',  icon:'note', class: '' },
 ];

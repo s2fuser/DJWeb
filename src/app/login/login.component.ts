@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userDetail', response.message);
         if (response.message.loginToken != '' && response.message.loginToken != null && response.message.loginToken != undefined) {
           this.showToaster('Login successfully !')
-          this.isLoading = false
+         // this.isLoading = false
           setTimeout(() => {
             this.router.navigate(['/dashboard']);
           }, 2000); 

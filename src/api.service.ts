@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000/api/web'; // Replace with your API URL
+  private apiUrl = 'http://localhost:3000/api/web';
+ // private apiUrl = 'https://66b7-103-98-33-250.ngrok-free.app/api/web';
 
   constructor(private http: HttpClient) { }
 

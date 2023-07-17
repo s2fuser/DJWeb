@@ -1,8 +1,9 @@
-import { Component, ViewChild,OnInit  } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'api.service';
 import { ManualToasterErrorComponent } from 'app/components/manual-toaster-error/manual-toaster-error.component';
 import { ManualToasterComponent } from 'app/components/manual-toaster/manual-toaster.component';
+import { AuthService } from 'auth.service';
 
 
 @Component({
@@ -15,11 +16,11 @@ export class LoginComponent implements OnInit {
   @ViewChild('toastererror') toastererror!: ManualToasterErrorComponent;
   userName: any = '';
   password: any = '';
-  message:any;
-  type:any;
+  message: any;
+  type: any;
   isLoading = false;
 
-  constructor(private router: Router, private apiService: ApiService) { 
+  constructor(private router: Router, private apiService: ApiService, private authService: AuthService) {
   }
   ngOnInit(): void {
   }
@@ -33,14 +34,14 @@ export class LoginComponent implements OnInit {
       console.log(response.status)
       if (response.status != 'error') {
         localStorage.setItem('userDetail', response.message);
-        if (response.message.loginToken != '' && response.message.loginToken != null && response.message.loginToken != undefined) {
-          this.showToaster('Login successfully !')
-         // this.isLoading = false
-          setTimeout(() => {
-            this.router.navigate(['/dashboard']);
-          }, 2000); 
-         
-        }
+        this.authService.login();
+        this.showToaster('Login successfully !')
+        // this.isLoading = false
+        setTimeout(() => {
+          this.router.navigate(['/dashboard']);
+        }, 2000);
+
+
 
       } else {
         this.isLoading = false
@@ -49,12 +50,12 @@ export class LoginComponent implements OnInit {
 
     });
   }
-  showToaster(message:any){
-    this.message=message
+  showToaster(message: any) {
+    this.message = message
     this.toaster.showToaster()
   }
-  showToasterError(message:any){
-    this.message=message
+  showToasterError(message: any) {
+    this.message = message
     this.toastererror.showToaster()
   }
 }

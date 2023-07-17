@@ -15,6 +15,7 @@ import { SettingsComponent } from 'app/settings/settings.component';
 import { UserDJListComponent } from 'app/user-dj-list/user-dj-list.component';
 import { LoginComponent } from 'app/login/login.component';
 import { DjlistComponent } from 'app/djlist/djlist.component';
+import { AuthGuard } from 'auth.guard';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard', component: DashboardComponent },

@@ -13,7 +13,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./user-dj-list.component.scss']
 })
 export class UserDJListComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'email', 'mobileNo', 'action'];
+  displayedColumns: string[] = ['position', 'name', 'email', 'mobileNo', 'status', 'action'];
   dataSource = new MatTableDataSource<PeriodicElement>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('toaster') toaster!: ManualToasterComponent;
@@ -49,7 +49,8 @@ export class UserDJListComponent implements OnInit {
             name: response.message[i].firstName,
             email: response.message[i].emailId,
             mobileNo: response.message[i].mobileNumber,
-            isActive:response.message[i].isActive
+            isActive: response.message[i].isActive,
+            userstatus: response.message[i].isActive == true ? 'Active' : 'In-Active',
           }
 
           this.userList.push(array)
@@ -122,11 +123,11 @@ export class UserDJListComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  lockUser(id:any){
+  lockUser(id: any) {
     this.isLoading = true
     var param = {
-      userid:id,
-      isActive:false
+      userid: id,
+      isActive: false
     }
     this.apiService.post('lockUser', param).subscribe((response: any) => {
       console.log(response.status)
@@ -145,11 +146,11 @@ export class UserDJListComponent implements OnInit {
     });
 
   }
-  unlockUser(id:any){
+  unlockUser(id: any) {
     this.isLoading = true
     var param = {
-      userid:id,
-      isActive:true
+      userid: id,
+      isActive: true
     }
     this.apiService.post('unlockUser', param).subscribe((response: any) => {
       console.log(response.status)
@@ -188,5 +189,6 @@ export interface PeriodicElement {
   name: string;
   email: string;
   mobileNo: string;
+  userstatus: string;
 }
 

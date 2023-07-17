@@ -4,9 +4,9 @@
             <div *ngFor="let value of eventArray" class="col-md-4 col-lg-4 col-sm-12 pt-2">
                 <mat-card class="example-card">
                     <mat-card-header>
-                      <mat-card-title>{{value.Event_name}}</mat-card-title>
+                        <mat-card-title>{{value.Event_name}}</mat-card-title>
                     </mat-card-header>
-                    <img mat-card-image src="{{value.Event_img}}" alt="Event image">
+                    <img mat-card-image style="height: 201px;" src="{{value.Event_img}}" alt="Event image">
                     <mat-card-content>
                         <div class="cardContent">
                             <i class="material-icons">event</i>
@@ -23,27 +23,32 @@
                             <div class="fw-b fs-16 pl-2">Address:</div>
                             <div class="fw-500 fs-15 pl-2">{{value.Event_address}}</div>
                         </div>
-                        
+
                         <div class="cardContent pt-2">
                             <i class="material-icons">money</i>
                             <div class="fw-b fs-16 pl-2">Cost: </div>
                             <div class="fw-500 fs-15 pl-2">{{value.Event_cost}}</div>
                         </div>
-                        <div >
+                        <div>
                             <div class="cardContent pt-2">
                                 <i class="material-icons">info</i>
                                 <div class="fw-b fs-16 pl-2">About Event: </div>
                             </div>
-                            
-                            <div class="fw-500 fs-15 pl-2">{{value.Event_about}}</div>
+                            <div class="fw-500 fs-15 pl-2 scrollable">
+                                {{value.Event_about}}
+                            </div>
                         </div>
-                       
-                        
                     </mat-card-content>
-                  </mat-card>
+                </mat-card>
             </div>
         </div>
         <loading *ngIf="isLoading">{{ isLoading }}</loading>
+        <div *ngIf="eventArray.length == 0" class="noData">
+            <i class="material-icons" style="font-size: 109px;">sentiment_dissatisfied</i>
+            <div style="font-weight: 400;">
+                No Data Found !
+            </div>
+        </div>
         <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
                 <mat-card class="example-card">

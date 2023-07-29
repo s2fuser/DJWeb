@@ -11,7 +11,7 @@ import { ApiService } from 'api.service';
 })
 
 export class PaymentComponent implements OnInit {
-  displayedColumns: string[] = ['position','name', 'mobile','eventname','paymenttype', 'date'];
+  displayedColumns: string[] = ['position','name', 'mobile','eventname','paymenttype', 'date','totalamount'];
   dataSource = new MatTableDataSource<PeriodicElement>;
   // ELEMENT_DATA: MatTableDataSource<PeriodicElement>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -37,7 +37,8 @@ export class PaymentComponent implements OnInit {
             eventname: response.message[i].EventName, 
             date: response.message[i].PaymentDateTime, 
             name: response.message[i].Name, 
-            mobile:response.message[i].PhoneNumber
+            mobile:response.message[i].PhoneNumber,
+            totalamount:response.message[i].TotalPrice
           }
           
           this.payment.push(array)
@@ -65,6 +66,7 @@ export interface PeriodicElement {
   date: string;
   name: string;
   mobile: number;
+  totalamount:number;
 }
 
 // const ELEMENT_DATA: PeriodicElement[] = [

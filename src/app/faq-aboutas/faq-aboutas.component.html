@@ -1,0 +1,38 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+            <mat-tab label="About Us">
+                <ckeditor [editor]="Editor" [(ngModel)]="editorData" [config]="editorConfig" style="min-height: 400px;">
+                </ckeditor>
+                <div class="buttons">
+                    <button mat-raised-button color="primary" style="margin-top: 20px;" (click)="saveAboutus()">Save</button>
+                    <button class="ml-3" mat-raised-button color="warn" style="margin-top: 20px;"
+                        (click)="clearAboutus()">Clear</button>
+                </div>
+            </mat-tab>
+            <mat-tab label="Contact Us">
+                <ckeditor [editor]="Editor" [(ngModel)]="editorDataContactUs" [config]="editorConfig" style="min-height: 400px;">
+                </ckeditor>
+                <div class="buttons">
+                    <button mat-raised-button color="primary" style="margin-top: 20px;" (click)="saveContactus()">Save</button>
+                    <button class="ml-3" mat-raised-button color="warn" style="margin-top: 20px;"
+                        (click)="clearContactus()">Clear</button>
+                </div>
+            </mat-tab>
+            <mat-tab label="FAQ">
+                <ckeditor [editor]="Editor" [(ngModel)]="editorDataFAQ" [config]="editorConfig" style="min-height: 400px;">
+                </ckeditor>
+                <div class="buttons">
+                    <button mat-raised-button color="primary" style="margin-top: 20px;" (click)="saveFAQ()">Save</button>
+                    <button class="ml-3" mat-raised-button color="warn" style="margin-top: 20px;"
+                        (click)="clearFAQ()">Clear</button>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+        
+    </div>
+     
+    <app-manual-toaster message={{message}} #toaster></app-manual-toaster>
+    <app-manual-toaster-error message={{message}} #toastererror></app-manual-toaster-error>
+    <loading *ngIf="isLoading">{{ isLoading }}</loading>
+</div>

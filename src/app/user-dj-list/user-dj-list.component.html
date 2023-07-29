@@ -86,10 +86,10 @@
         <label style="color: black;">Email</label>
         <input type="text" class="form-control" [(ngModel)]="useremali">
         <label style="color: black;">Mobile No.</label>
-        <input type="text" class="form-control" [(ngModel)]="usermobile">
+        <input type="text" maxlength="10" class="form-control" [(ngModel)]="usermobile" (keypress)="numberOnly($event)">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
         <button type="button" class="btn" data-dismiss="value" style="background-color: #4aa54e;color: white;"
           (click)="updateUser()">Save changes</button>
       </div>

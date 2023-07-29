@@ -1,13 +1,24 @@
 <div class="main-content">
     <div class="container-fluid">
+        <div style="width: 21%;margin-left: auto; padding: 9px; ">
+            <input style="width: 209px;height: 45px;" type="text" class="searchTextBox" [(ngModel)]="searchQuery"
+                (ngModelChange)="filterEvents()" placeholder="Search">
+        </div>
         <div class="row">
-            <div *ngFor="let value of eventArray" class="col-md-4 col-lg-4 col-sm-12 pt-2">
+            <div *ngFor="let value of filteredEvents; let i = index;" class="col-md-4 col-lg-4 col-sm-12 pt-2">
                 <mat-card class="example-card">
                     <mat-card-header>
-                        <mat-card-title>{{value.Event_name}}</mat-card-title>
+                        <mat-card-title class="fw-b">{{i + 1}}. {{value.Event_name}}</mat-card-title>
+                        <i class="material-icons deleteIcon" (click)="deleteEvent(value.Event_id)">delete</i>
                     </mat-card-header>
-                    <img mat-card-image style="height: 201px;" src="{{value.Event_img}}" alt="Event image">
+                    <img mat-card-image style="height: 201px;padding: 0px 15px 0px 15px;" src="{{value.Event_img}}"
+                        alt="Event image">
                     <mat-card-content>
+                        <div class="cardContent">
+                            <i class="material-icons">person</i>
+                            <div class="fw-b fs-16 pl-2">DJ Name: </div>
+                            <div class="fw-500 fs-15 pl-2">{{value.Event_djName}}</div>
+                        </div>
                         <div class="cardContent">
                             <i class="material-icons">event</i>
                             <div class="fw-b fs-16 pl-2">Date: </div>
@@ -18,11 +29,11 @@
                             <div class="fw-b fs-16 pl-2">Time: </div>
                             <div class="fw-500 fs-15 pl-2">{{value.Event_startTime}}</div>
                         </div>
-                        <div class="cardContent pt-2">
+                        <!-- <div class="cardContent pt-2">
                             <i class="material-icons">home</i>
                             <div class="fw-b fs-16 pl-2">Address:</div>
-                            <div class="fw-500 fs-15 pl-2">{{value.Event_address}}</div>
-                        </div>
+                            <div class="fw-500 fs-15 pl-2 scrollable" style="height: 32px;">{{value.Event_address}}</div>
+                        </div> -->
 
                         <div class="cardContent pt-2">
                             <i class="material-icons">money</i>
@@ -42,32 +53,15 @@
                 </mat-card>
             </div>
         </div>
+        <app-manual-toaster message={{message}} #toaster></app-manual-toaster>
+        <app-manual-toaster-error message={{message}} #toastererror></app-manual-toaster-error>
         <loading *ngIf="isLoading">{{ isLoading }}</loading>
-        <div *ngIf="eventArray.length == 0" class="noData">
+        <div *ngIf="filteredEvents.length == 0" class="noData">
             <i class="material-icons" style="font-size: 109px;">sentiment_dissatisfied</i>
             <div style="font-weight: 400;">
                 No Data Found !
             </div>
         </div>
-        <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                      <div mat-card-avatar class="example-header-image"></div>
-                      <mat-card-title>Shiba Inu</mat-card-title>
-                      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                      <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
-                      </p>
-                    </mat-card-content>
-                  </mat-card>
-            </div>
-        </div> -->
 
     </div>
 </div>

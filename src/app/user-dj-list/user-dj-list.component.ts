@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'api.service';
@@ -18,11 +18,13 @@ export class UserDJListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('toaster') toaster!: ManualToasterComponent;
   @ViewChild('toastererror') toastererror!: ManualToasterErrorComponent;
+  @ViewChild('myModal', { static: false }) myModal!: ElementRef;
+
   userList: Array<any> = []
   isLoading: boolean = false
   username: any;
   useremali: any;
-  usermobile: any;
+  usermobile: string = '';
   value: any;
   userId: any;
   message: any;
@@ -70,33 +72,40 @@ export class UserDJListComponent implements OnInit {
     this.useremali = userlistFilter[0].email;
     this.usermobile = userlistFilter[0].mobileNo;
     this.userId = userlistFilter[0].userid;
-
     console.log(userlistFilter)
   }
   updateUser() {
-    this.isLoading = true
-    let param = {
-      name: this.username,
-      email: this.useremali,
-      mobileNo: this.usermobile,
-      userid: this.userId
-    }
-    this.apiService.post('updateUser', param).subscribe((response: any) => {
-      console.log(response.status)
-      if (response.status != 'error') {
-        this.isLoading = false
-        this.showToaster('Update successfully !')
-        setTimeout(() => {
-          this.reloadWindow()
-          //this.router.navigate(['settings']);
-        }, 2000);
-      } else {
-        this.isLoading = false
-        this.showToasterError(response.message)
+    if(this.username == ''){
+      this.showToasterError('Please enter Username.')
+    }else if(this.useremali == ''){
+      this.showToasterError('Please enter Useremail')
+    }else if(this.usermobile  == ''){
+      this.showToasterError('Please enter MobileNo')
+    }else{
+      this.isLoading = true
+      this.closeModal();
+      let param = {
+        name: this.username,
+        email: this.useremali,
+        mobileNo: this.usermobile,
+        userid: this.userId
       }
-
-    });
-
+      this.apiService.post('updateUser', param).subscribe((response: any) => {
+        console.log(response.status)
+        if (response.status != 'error') {
+          this.isLoading = false
+          this.showToaster('Update successfully !')
+          setTimeout(() => {
+            this.reloadWindow()
+            //this.router.navigate(['settings']);
+          }, 2000);
+        } else {
+          this.isLoading = false
+          this.showToasterError(response.message)
+        }
+  
+      });
+    }
   }
   deleteUser(id: any) {
     this.isLoading = true
@@ -169,6 +178,26 @@ export class UserDJListComponent implements OnInit {
     });
 
     
+  }
+  closeModal() {
+    const modalElement = document.getElementById('exampleModal');
+    if (modalElement) {
+      modalElement.classList.remove('show');
+      modalElement.style.display = 'none';
+      const modalBackdrop = document.querySelector('.modal-backdrop');
+      if (modalBackdrop) {
+        modalBackdrop.remove();
+      }
+      document.body.classList.remove('modal-open');
+    }
+  }
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
   }
   showToaster(message: any) {
     this.message = message

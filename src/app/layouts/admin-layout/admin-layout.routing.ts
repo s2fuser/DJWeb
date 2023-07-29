@@ -16,6 +16,8 @@ import { UserDJListComponent } from 'app/user-dj-list/user-dj-list.component';
 import { LoginComponent } from 'app/login/login.component';
 import { DjlistComponent } from 'app/djlist/djlist.component';
 import { AuthGuard } from 'auth.guard';
+import { FaqAboutasComponent } from 'app/faq-aboutas/faq-aboutas.component';
+
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
@@ -32,5 +34,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'settings', component: SettingsComponent },
     { path: 'user-list', component: UserDJListComponent },
     { path: 'djuser-list', component: DjlistComponent },
+    { path: 'faq-aboutus', component: FaqAboutasComponent },
     // { path: 'login',          component: LoginComponent },
 ];

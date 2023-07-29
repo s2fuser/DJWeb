@@ -25,30 +25,37 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   login() {
-    this.isLoading = true
-    const param = {
-      emailId: this.userName,
-      password: this.password
-    }
-    this.apiService.post('login', param).subscribe((response: any) => {
-      console.log(response.status)
-      if (response.status != 'error') {
-        localStorage.setItem('userDetail', response.message);
-        this.authService.login();
-        this.showToaster('Login successfully !')
-        // this.isLoading = false
-        setTimeout(() => {
-          this.router.navigate(['/dashboard']);
-        }, 2000);
-
-
-
-      } else {
-        this.isLoading = false
-        this.showToasterError(response.message)
+    if(this.userName == ''){
+      this.showToasterError('Please Enter Username !')
+    }else if(this.password == ''){
+      this.showToasterError('Please Enter Password !')
+    }else{
+      this.isLoading = true
+      const param = {
+        emailId: this.userName,
+        password: this.password
       }
-
-    });
+      this.apiService.post('login', param).subscribe((response: any) => {
+        console.log(response.status)
+        if (response.status != 'error') {
+          localStorage.setItem('userDetail', response.message);
+          this.authService.login();
+          this.showToaster('Login successfully !')
+          // this.isLoading = false
+          setTimeout(() => {
+            this.router.navigate(['/dashboard']);
+          }, 2000);
+  
+  
+  
+        } else {
+          this.isLoading = false
+          this.showToasterError(response.message)
+        }
+  
+      });
+    }
+    
   }
   showToaster(message: any) {
     this.message = message

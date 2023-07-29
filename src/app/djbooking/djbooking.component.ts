@@ -9,7 +9,7 @@ import { ApiService } from 'api.service';
   styleUrls: ['./djbooking.component.scss']
 })
 export class DjbookingComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'eventname', 'username', 'mobile', 'date','djcost','totalticket', 'totalamount'];
+  displayedColumns: string[] = ['position', 'eventname','djname', 'username', 'mobile', 'date','djcost','totalticket', 'totalamount'];
   dataSource = new MatTableDataSource<PeriodicElement>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -36,6 +36,7 @@ export class DjbookingComponent implements OnInit {
           var array = {
             position: i + 1,
             eventName: response.message[i].eventName,
+            djname : response.message[i].djName,
             userName: response.message[i].userName,
             mobileNumber: response.message[i].mobileNumber,
             bookedDate: response.message[i].bookedDate,
@@ -54,10 +55,34 @@ export class DjbookingComponent implements OnInit {
 
     });
   }
+  convertToNormalDateTime(isoDateTime: string): string {
+    const isoDate = new Date(isoDateTime);
+    const date = this.formatDate(isoDate);
+    const time = this.formatTime(isoDate);
+
+    return `${date} ${time}`;
+  }
+
+  formatDate(date: Date): string {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
+
+  formatTime(date: Date): string {
+    const hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+    const amPM = hours >= 12 ? 'PM' : 'AM';
+    const normalHour = hours % 12 || 12;
+    return `${normalHour}:${minutes} ${amPM}`;
+  }
 
 }
 export interface PeriodicElement {
   eventName: string
+  djname:string
   userName: string
   bookedDate: Date
   totalAmount: number

@@ -26,6 +26,9 @@ import { ManualToasterComponent } from './components/manual-toaster/manual-toast
 import { LoadingComponent } from './loading';
 import { ManualToasterErrorComponent } from './components/manual-toaster-error/manual-toaster-error.component';
 import { DjlistComponent } from './djlist/djlist.component';
+import { FaqAboutasComponent } from './faq-aboutas/faq-aboutas.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
 
@@ -47,6 +50,7 @@ import { DjlistComponent } from './djlist/djlist.component';
     MatSelectModule,
     MatPaginatorModule,
     MatTableModule,
+    CKEditorModule 
   ],
   declarations: [
     AppComponent,
@@ -60,7 +64,8 @@ import { DjlistComponent } from './djlist/djlist.component';
     ManualToasterComponent,
     LoadingComponent,
     ManualToasterErrorComponent,
-    DjlistComponent
+    DjlistComponent,
+    FaqAboutasComponent
 
   ],
   providers: [],

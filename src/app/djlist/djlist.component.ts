@@ -77,32 +77,42 @@ export class DjlistComponent implements OnInit {
     console.log(userlistFilter)
   }
   updateUser() {
-    this.isLoading = true
-    let param = {
-      name: this.username,
-      email: this.useremali,
-      mobileNo: this.usermobile,
-      userid: this.userId
-    }
-    this.apiService.post('updatedjUser', param).subscribe((response: any) => {
-      console.log(response.status)
-      if (response.status != 'error') {
-
-        this.showToaster('Update successfully !')
-        this.isLoading = false
-        setTimeout(() => {
-          this.reloadWindow()
-          //this.router.navigate(['settings']);
-        }, 2000);
-
-
-
-      } else {
-        this.isLoading = false
-        this.showToasterError(response.message)
+    if(this.username == ''){
+      this.showToasterError('Please enter Username.')
+    }else if(this.useremali == ''){
+      this.showToasterError('Please enter Useremail')
+    }else if(this.usermobile  == ''){
+      this.showToasterError('Please enter MobileNo')
+    }else{
+      this.isLoading = true
+      this.closeModal()
+      let param = {
+        name: this.username,
+        email: this.useremali,
+        mobileNo: this.usermobile,
+        userid: this.userId
       }
-
-    });
+      this.apiService.post('updatedjUser', param).subscribe((response: any) => {
+        console.log(response.status)
+        if (response.status != 'error') {
+  
+          this.showToaster('Update successfully !')
+          this.isLoading = false
+          setTimeout(() => {
+            this.reloadWindow()
+            //this.router.navigate(['settings']);
+          }, 2000);
+  
+  
+  
+        } else {
+          this.isLoading = false
+          this.showToasterError(response.message)
+        }
+  
+      });
+    }
+   
 
   }
   deleteUser(id: any) {
@@ -176,6 +186,26 @@ export class DjlistComponent implements OnInit {
     });
 
 
+  }
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
+  closeModal() {
+    const modalElement = document.getElementById('exampleModal');
+    if (modalElement) {
+      modalElement.classList.remove('show');
+      modalElement.style.display = 'none';
+      const modalBackdrop = document.querySelector('.modal-backdrop');
+      if (modalBackdrop) {
+        modalBackdrop.remove();
+      }
+      document.body.classList.remove('modal-open');
+    }
   }
   showToaster(message: any) {
     this.message = message

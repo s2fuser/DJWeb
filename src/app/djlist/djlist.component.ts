@@ -27,6 +27,9 @@ export class DjlistComponent implements OnInit {
   value: any;
   userId: any;
   message: any;
+  usernameValidate: boolean = false;
+  useremaliValidate: boolean = false;
+  usermobileValidate: boolean = false;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
@@ -67,6 +70,9 @@ export class DjlistComponent implements OnInit {
     });
   }
   edit(id: any) {
+    this.usernameValidate = false;
+    this.useremaliValidate = false;
+    this.usermobileValidate = false;
     let userlistFilter: Array<any>
     userlistFilter = this.userList.filter((e) => e.userid == id)
     this.username = userlistFilter[0].name;
@@ -77,13 +83,22 @@ export class DjlistComponent implements OnInit {
     console.log(userlistFilter)
   }
   updateUser() {
+    this.usernameValidate = false;
+    this.useremaliValidate = false;
+    this.usermobileValidate = false;
     if(this.username == ''){
-      this.showToasterError('Please enter Username.')
+      //this.showToasterError('Please enter Username.')
+      this.usernameValidate = true;
     }else if(this.useremali == ''){
-      this.showToasterError('Please enter Useremail')
+     //this.showToasterError('Please enter Useremail')
+     this.useremaliValidate = true;
     }else if(this.usermobile  == ''){
-      this.showToasterError('Please enter MobileNo')
+      //this.showToasterError('Please enter MobileNo')
+      this.usermobileValidate = true;
     }else{
+      this.usernameValidate = false;
+      this.useremaliValidate = false;
+      this.usermobileValidate = false;
       this.isLoading = true
       this.closeModal()
       let param = {

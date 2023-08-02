@@ -49,7 +49,8 @@ export class EventComponent implements OnInit {
             Event_about: response.message.Events[i].Event_about,
             Event_cost: response.message.Events[i].Event_cost,
             Event_img: ImgapiUrl + response.message.Events[i].Event_image,
-            Event_djName: djNamefilter.length > 0 ? djNamefilter[0].dj_firstName : ''
+            Event_djName: djNamefilter.length > 0 ? djNamefilter[0].dj_firstName : '',
+            Event_type: response.message.Events[i].Event_type == 1 ? 'Offline' : 'Online'
           }
 
           this.eventArray.push(array)

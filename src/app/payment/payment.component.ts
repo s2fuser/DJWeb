@@ -53,6 +53,30 @@ export class PaymentComponent implements OnInit {
     
   }
 
+  convertToNormalDateTime(isoDateTime: string): string {
+    const isoDate = new Date(isoDateTime);
+    const date = this.formatDate(isoDate);
+    const time = this.formatTime(isoDate);
+
+    return `${date} ${time}`;
+  }
+
+  formatDate(date: Date): string {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
+
+  formatTime(date: Date): string {
+    const hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+    const amPM = hours >= 12 ? 'PM' : 'AM';
+    const normalHour = hours % 12 || 12;
+    return `${normalHour}:${minutes} ${amPM}`;
+  }
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

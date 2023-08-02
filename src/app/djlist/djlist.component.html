@@ -83,12 +83,25 @@
       <div class="modal-body">
         <label style="color: black;">User Id</label>
         <input type="text" class="form-control" [(ngModel)]="userId" [readonly]="true">
-        <label style="color: black;">Name</label>
+
+        <label style="color: black;">Name<span style="color: rgb(255, 0, 0);"> *</span></label>
         <input type="text" class="form-control" [(ngModel)]="username">
-        <label style="color: black;">Email</label>
+        <div *ngIf="usernameValidate">
+          <label style="color: rgb(255, 0, 0);">Please enter Name</label>
+        </div>
+
+        <label style="color: black;">Email<span style="color: rgb(255, 0, 0);"> *</span></label>
         <input type="text" class="form-control" [(ngModel)]="useremali">
-        <label style="color: black;">Mobile No.</label>
+        <div *ngIf="useremaliValidate">
+          <label style="color: rgb(255, 0, 0);">Please enter Email</label>
+        </div>
+
+        <label style="color: black;">Mobile No.<span style="color: rgb(255, 0, 0);"> *</span></label>
         <input type="text" maxlength="10" class="form-control" [(ngModel)]="usermobile" (keypress)="numberOnly($event)">
+        <div *ngIf="usermobileValidate">
+          <label style="color: rgb(255, 0, 0);">Please enter Mobile No.</label>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>

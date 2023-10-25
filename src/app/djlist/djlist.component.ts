@@ -5,7 +5,8 @@ import { ApiService } from 'api.service';
 import { ManualToasterErrorComponent } from 'app/components/manual-toaster-error/manual-toaster-error.component';
 import { ManualToasterComponent } from 'app/components/manual-toaster/manual-toaster.component';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Location,DatePipe } from '@angular/common';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-djlist',
@@ -233,8 +234,41 @@ export class DjlistComponent implements OnInit {
   reloadWindow() {
     window.location.reload();
   }
+  ExportTOExcel()
+  {
+    // Create a new MatTableDataSource with all the data
+    const fullDataSource = new MatTableDataSource(this.userList);
 
+    // Set the paginator for the full data source
+    fullDataSource.paginator = this.paginator;
+
+    // Create a DatePipe instance
+  const datePipe = new DatePipe('en-US');
+
+    // Convert the data to an array of arrays
+     const data = fullDataSource.data.map((item) => {
+    return [
+      item.position,
+      item.name,
+      item.email,
+      item.mobileNo,
+      item.userstatus
+    ];
+  });
+
+    // Create a worksheet
+    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([['No.', 'User Name', 'Email', 'Mobile Number', 'Status'], ...data]);
+
+    // Create a workbook
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Data');
+
+    // Save the Excel file
+    XLSX.writeFile(wb, 'DJUser-List Excel.xlsx');
+    
+  }
 }
+
 export interface PeriodicElement {
   position: number;
   userid: number

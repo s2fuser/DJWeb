@@ -21,9 +21,12 @@ export class EventComponent implements OnInit {
   about: any;
   cost: any;
   eventArray: Array<any> = [];
+  orginalEventArray: Array<any> = [];
   filteredEvents: any[] = [];
   message: any;
+  toggleName:any;
   ngOnInit(): void {
+    this.toggleName = 'Offline';
     this.getEvent()
     this.filteredEvents = this.eventArray;
   }
@@ -50,13 +53,32 @@ export class EventComponent implements OnInit {
             Event_cost: response.message.Events[i].Event_cost,
             Event_img: ImgapiUrl + response.message.Events[i].Event_image,
             Event_djName: djNamefilter.length > 0 ? djNamefilter[0].dj_firstName : '',
-            Event_type: response.message.Events[i].Event_type == 1 ? 'Offline' : 'Online'
+            Event_type: 'Offline'
           }
 
           this.eventArray.push(array)
         }
+        for(let j=0;j<response.message.liveStream.length;j++ ){
+          var djNamefilter = response.message.djUsers.filter((x) => x.dj_userid == response.message.liveStream[j].LiveEvent_CreateBy);
+          var array = {
+            Event_id: response.message.liveStream[j].LiveEvent_id,
+            Event_name: response.message.liveStream[j].LiveEvent_Name,
+            Event_startDate: response.message.liveStream[j].LiveEvent_Date,
+            Event_startTime: response.message.liveStream[j].LiveEvent_StartTime,
+            //Event_address: response.message.liveStream[j].Event_address,
+            Event_address: null,
+            Event_about: response.message.liveStream[j].LiveEvent_About,
+            Event_cost: response.message.liveStream[j].LiveEvent_Cost,
+            Event_img: ImgapiUrl + response.message.liveStream[j].LiveStream_image,
+            Event_djName: djNamefilter.length > 0 ? djNamefilter[0].dj_firstName : '',
+            Event_type: 'Online'
+          }
+          this.eventArray.push(array)
+        }
+         
       }
-      this.eventArray
+      this.orginalEventArray = this.eventArray;
+      this.filteredEvents = this.orginalEventArray.filter(x=>x.Event_type == 'Offline')
       this.isLoading = false
 
     });
@@ -93,6 +115,18 @@ export class EventComponent implements OnInit {
   showToasterError(message: any) {
     this.message = message
     this.toastererror.showToaster()
+  }
+  onToggleChange(event: any) {
+    // 'event' parameter contains information about the toggle change
+    if (event.checked) {
+      this.eventArray = this.orginalEventArray.filter(x=>x.Event_type == 'Online')
+      this.filteredEvents = this.orginalEventArray.filter(x=>x.Event_type == 'Online')
+      this.toggleName = 'Online';
+    } else {
+      this.eventArray = this.orginalEventArray.filter(x=>x.Event_type == 'Offline')
+      this.filteredEvents = this.orginalEventArray.filter(x=>x.Event_type == 'Offline')
+      this.toggleName = 'Offline';
+    }
   }
 
 }

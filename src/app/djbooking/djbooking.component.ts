@@ -1,8 +1,9 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'api.service';
-
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-djbooking',
   templateUrl: './djbooking.component.html',
@@ -77,6 +78,43 @@ export class DjbookingComponent implements OnInit {
     const amPM = hours >= 12 ? 'PM' : 'AM';
     const normalHour = hours % 12 || 12;
     return `${normalHour}:${minutes} ${amPM}`;
+  }
+  ExportTOExcel()
+  {
+    // Create a new MatTableDataSource with all the data
+    const fullDataSource = new MatTableDataSource(this.bookedList);
+
+    // Set the paginator for the full data source
+    fullDataSource.paginator = this.paginator;
+
+    // Create a DatePipe instance
+  const datePipe = new DatePipe('en-US');
+
+    // Convert the data to an array of arrays
+     const data = fullDataSource.data.map((item) => {
+    return [
+      item.position,
+      item.eventName,
+      item.djname,
+      item.userName,
+      item.mobileNumber,
+      datePipe.transform(item.bookedDate, 'dd-MM-yyyy HH:mm:ss'),
+      item.djCost,
+      item.totalTicket,
+      item.totalAmount
+    ];
+  });
+
+    // Create a worksheet
+    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([['No.', 'Event Name', 'DJ Name','User Name', 'Mobile Number','Booked Date','DJ Cost','Total Ticket', 'Total Amount'], ...data]);
+
+    // Create a workbook
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Data');
+
+    // Save the Excel file
+    XLSX.writeFile(wb, 'DJBooking-List Excel.xlsx');
+    
   }
 
 }

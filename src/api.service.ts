@@ -6,12 +6,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
   // Local API
-   private apiUrl = 'http://localhost:3000/api/web';
+   //private apiUrl = 'http://localhost:3000/api/web';
    //public ImgapiUrl = 'http://localhost:3000/api/djuser/image/';
 
   //Server API
-  //private apiUrl = 'https://djapp.brightherd.com:3000/api/web';
-  public ImgapiUrl = 'https://djapp.brightherd.com:3000/api/djuser/image/';
+  private apiUrl = 'https://redlinersevent.com/api/web';
+  public ImgapiUrl = 'https://redlinersevent.com/api/djuser/image/';
 
   constructor(private http: HttpClient) { }
 

@@ -1,11 +1,21 @@
 <div class="main-content">
   <div class="container-fluid">
-    <div style="width: 21%;margin-left: auto; padding: 9px; ">
+    <!-- <div style="width: 21%;margin-left: auto; padding: 9px; ">
       <input matInput type="text" class="form-control searchTextBox" (input)="applyFilter($event.target.value)"
         placeholder="Search">
+    </div> -->
+    <div style="display: flex; align-items: center; justify-content: end;">
+      <div style="margin: 0% 2% 2% 0%;">
+        <button mat-raised-button style="background-color: #4aa54e; color: white;" (click)="ExportTOExcel()">Export
+          Excel</button>
+      </div>
+      <div style="margin: 0% 0% 2% 0%;">
+        <input matInput type="text" class="form-control searchTextBox" (input)="applyFilter($event.target.value)"
+          placeholder="Search">
+      </div>
     </div>
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
+    <div class="mat-elevation-z8" #TABLE>
+      <table mat-table #table [dataSource]="dataSource">
 
         <!-- Position Column -->
         <ng-container matColumnDef="position">
@@ -87,21 +97,21 @@
         <div *ngIf="usernameValidate">
           <label style="color: rgb(255, 0, 0);">Please enter Name</label>
         </div>
-        
+
 
         <label style="color: black;">Email <span style="color: rgb(255, 0, 0);"> *</span></label>
         <input type="text" class="form-control" [(ngModel)]="useremali">
         <div *ngIf="useremaliValidate">
           <label style="color: rgb(255, 0, 0);">Please enter Email</label>
         </div>
-        
+
 
         <label style="color: black;">Mobile No.<span style="color: rgb(255, 0, 0);"> *</span></label>
         <input type="text" maxlength="10" class="form-control" [(ngModel)]="usermobile" (keypress)="numberOnly($event)">
         <div *ngIf="usermobileValidate">
           <label style="color: rgb(255, 0, 0);">Please enter Mobile No.</label>
         </div>
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>

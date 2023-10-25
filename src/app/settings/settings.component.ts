@@ -105,13 +105,15 @@ export class SettingsComponent implements OnInit {
     this.commissionPerValidation = false
     this.commissionAmtValidation = false
     this.perValuevalidation = false
+    let commssionPercentage = 0;
+    commssionPercentage = parseInt(this.commissionPer.value)
     if (this.commissionPer.value == '') {
      // this.showToasterError('Please Enter Commission Percentage.')
       this.commissionPerValidation = true
     } else if (this.commissionAmt.value == '') {
       //this.showToasterError('Please Enter Commission Amount.')
       this.commissionAmtValidation = true
-    }else if (this.commissionPer.value > '100') {
+    }else if (commssionPercentage > 100) {
       //this.showToasterError('Please Enter Commission Amount.')
       this.perValuevalidation = true
     } else {

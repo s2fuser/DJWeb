@@ -17,6 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {NgFor} from '@angular/common';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
@@ -30,7 +31,7 @@ import { FaqAboutasComponent } from './faq-aboutas/faq-aboutas.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   imports: [ 
@@ -46,11 +47,13 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSlideToggleModule,
     NgFor,
     MatSelectModule,
     MatPaginatorModule,
     MatTableModule,
-    CKEditorModule 
+    CKEditorModule ,
+    MatIconModule
   ],
   declarations: [
     AppComponent,

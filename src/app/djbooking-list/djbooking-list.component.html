@@ -1,0 +1,91 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <!-- <div style="width: 21%;margin-left: auto; padding: 9px; ">
+            <input matInput type="text" class="form-control searchTextBox" (input)="applyFilter($event.target.value)"
+              placeholder="Search">
+          </div> -->
+        <div style="display: flex; align-items: center; justify-content: end;">
+            <div style="margin: 0% 2% 2% 0%;">
+                <button mat-raised-button style="background-color: #4aa54e; color: white;"
+                    (click)="ExportTOExcel()">Export
+                    Excel</button>
+            </div>
+            <div style="margin: 0% 0% 2% 0%;">
+                <input matInput type="text" class="form-control searchTextBox"
+                    (input)="applyFilter($event.target.value)" placeholder="Search">
+            </div>
+        </div>
+        <div class="mat-elevation-z8" #TABLE>
+            <table mat-table #table [dataSource]="dataSource">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef class="tableHeader"> SI No. </th>
+                    <td mat-cell *matCellDef="let element" class="tableRow"> {{element.position}} </td>
+                </ng-container>
+
+                <!-- eventname Column -->
+                <ng-container matColumnDef="eventname">
+                    <th mat-header-cell *matHeaderCellDef class="tableHeader"> Event Name </th>
+                    <td mat-cell *matCellDef="let element" class="tableRow"> {{element.eventName}} </td>
+                </ng-container>
+
+                <!-- djname Column -->
+                <ng-container matColumnDef="djname">
+                    <th mat-header-cell *matHeaderCellDef class="tableHeader"> DJ Name </th>
+                    <td mat-cell *matCellDef="let element" class="tableRow"> {{element.djname}} </td>
+                </ng-container>
+
+                <!-- username Column -->
+                <ng-container matColumnDef="username">
+                    <th mat-header-cell *matHeaderCellDef class="tableHeader"> User Name </th>
+                    <td mat-cell *matCellDef="let element" class="tableRow"> {{element.userName}} </td>
+                </ng-container>
+
+                <!-- mobile Column -->
+                <ng-container matColumnDef="mobile">
+                    <th mat-header-cell *matHeaderCellDef class="tableHeader"> Mobile No </th>
+                    <td mat-cell *matCellDef="let element" class="tableRow"> {{element.mobileNumber}} </td>
+                </ng-container>
+
+                <!-- date Column -->
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef class="tableHeader"> Booking Date </th>
+                    <td mat-cell *matCellDef="let element" class="tableRow">
+                        {{convertToNormalDateTime(element.bookedDate)}} </td>
+                </ng-container>
+
+                <!-- djcost Column -->
+                <ng-container matColumnDef="djcost">
+                    <th mat-header-cell *matHeaderCellDef class="tableHeader"> DJ Cost </th>
+                    <td mat-cell *matCellDef="let element" class="tableRow"> {{element.djCost}} </td>
+                </ng-container>
+
+                <!-- totalticket Column -->
+                <ng-container matColumnDef="totalticket">
+                    <th mat-header-cell *matHeaderCellDef class="tableHeader"> Total Ticket </th>
+                    <td mat-cell *matCellDef="let element" class="tableRow"> {{element.totalTicket}} </td>
+                </ng-container>
+
+                <!-- total Column -->
+                <ng-container matColumnDef="totalamount">
+                    <th mat-header-cell *matHeaderCellDef class="tableHeader"> Total Amount </th>
+                    <td mat-cell *matCellDef="let element" class="tableRow"> {{element.totalAmount}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+
+            </mat-paginator>
+            <!-- <div class="buttons">
+                <button mat-raised-button color="primary">Print</button>
+
+            </div> -->
+        </div>
+        <loading *ngIf="isLoading">{{ isLoading }}</loading>
+    </div>
+</div>

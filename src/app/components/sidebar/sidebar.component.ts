@@ -15,6 +15,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/djuser-list', title: 'DJ-User list',  icon:'assignmentnd', class: '' },
     { path: '/event', title: 'Event',  icon:'event', class: '' },
     { path: '/dj-booking', title: 'Event Bookings',  icon:'note', class: '' },
+    { path: '/dj-booking-list', title: 'DJ Bookings',  icon:'note', class: '' },
     { path: '/faq-aboutus', title: 'FAQ & About Us',  icon:'note', class: '' },
 ];
 

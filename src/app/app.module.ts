@@ -32,6 +32,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import {MatIconModule} from '@angular/material/icon';
+import { DjbookingListComponent } from './djbooking-list/djbooking-list.component';
 
 @NgModule({
   imports: [ 
@@ -68,7 +69,8 @@ import {MatIconModule} from '@angular/material/icon';
     LoadingComponent,
     ManualToasterErrorComponent,
     DjlistComponent,
-    FaqAboutasComponent
+    FaqAboutasComponent,
+    DjbookingListComponent
 
   ],
   providers: [],
